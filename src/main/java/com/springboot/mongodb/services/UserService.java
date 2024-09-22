@@ -6,7 +6,9 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.mongodb.client.model.geojson.GeoJsonObjectType;
 import com.springboot.mongodb.domain.User;
+import com.springboot.mongodb.dto.UserDTO;
 import com.springboot.mongodb.repository.UserRepository;
 import com.springboot.mongodb.services.exception.ObjectNotFoundException;
 
@@ -23,5 +25,13 @@ public class UserService {
 	public User findById(String id) {
 		Optional<User> obj = repo.findById(id);
 		return obj.orElseThrow(() -> new ObjectNotFoundException("objeto nao encontrado"));
+	}
+	
+	public User insert(User obj) {
+		return repo.insert(obj);
+	}
+	
+	public User fromDTO(UserDTO objDto) {
+		return new User(objDto.getId(), objDto.getName(), objDto.getEmail());
 	}
 }

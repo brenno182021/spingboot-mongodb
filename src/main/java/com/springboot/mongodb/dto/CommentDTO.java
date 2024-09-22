@@ -7,29 +7,19 @@ public class CommentDTO implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
-	private String id;
 	private String text;
 	private Date date;
-	private AuthorDTO authorDTO;
+	private AuthorDTO author;
 	
 	public CommentDTO() {
 		
 	}
 
-	public CommentDTO(String id, String text, Date date, AuthorDTO authorDTO) {
+	public CommentDTO( String text, Date date, AuthorDTO authorDTO) {
 		super();
-		this.id = id;
 		this.text = text;
 		this.date = date;
-		this.authorDTO = authorDTO;
-	}
-
-	public String getId() {
-		return id;
-	}
-
-	public void setId(String id) {
-		this.id = id;
+		this.author = authorDTO;
 	}
 
 	public String getText() {
@@ -49,11 +39,11 @@ public class CommentDTO implements Serializable {
 	}
 
 	public AuthorDTO getAuthorDTO() {
-		return authorDTO;
+		return author;
 	}
 
 	public void setAuthorDTO(AuthorDTO authorDTO) {
-		this.authorDTO = authorDTO;
+		this.author = authorDTO;
 	}
 	
 	
